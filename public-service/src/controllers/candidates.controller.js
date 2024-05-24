@@ -3,9 +3,12 @@ const apiResponseHandler = require("../../helpers/apiResponseHandler");
 const config = require("../../common/config/config");
 
 class CandidateController {
+  // Method to handle request for fetching all candidates
   async getAllCandidates(req, res) {
     try {
+      // Extract API key from request headers
       const apiKey = req.headers["x-api-key"];
+      // Make a GET request to main service API to fetch all candidates
       const response = await axios.get(
         `${config.main_service_api}/candidates`,
         {
@@ -14,6 +17,7 @@ class CandidateController {
           },
         }
       );
+      // Extract candidates from response data
       const candidates = response.data.data;
       return apiResponseHandler.successResponse(
         res,

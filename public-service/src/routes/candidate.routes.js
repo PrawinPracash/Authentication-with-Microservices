@@ -6,6 +6,7 @@ const candidatesController = require("../controllers/candidates.controller");
 
 const router = express.Router();
 
+// Define route for fetching public candidates
 router.get(
   "/api/v1/public/candidates",
   apiKeyMiddleware,
